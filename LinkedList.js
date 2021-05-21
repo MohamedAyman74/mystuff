@@ -14,7 +14,7 @@ class LinkedList {
         this.length = 1;
     }
 
-printList(){
+    getValues(){
         const arr = [];
         let node = this.head;
         while(node !== null){
@@ -67,8 +67,7 @@ printList(){
       if(idx === 0){
         this.head = this.head.next;
         this.length--;
-        console.log(this.length);
-        return this.printList();
+        return this.getValues();
       }
       let previousNode = this.head;
       let holdingNode = {};
@@ -85,8 +84,28 @@ printList(){
       }
       holdingNode.next = nextNode;
       this.length--;
-      return this.printList();
+      return this.getValues();
+    }
+
+    getFirst(){
+      return this.head.val;
+    }
+
+    getLast(){
+      return this.tail.val;
+    }
+
+    getIndex(idx){
+      if(idx >= this.length){
+        return `No index with this number. The maximum length of the list is ${this.length}`
+      }
+      let previousNode = this.head;
+      while(idx > 0){
+        previousNode = previousNode.next;
+        idx--;
+      }
+      return previousNode.val;
     }
 }
 
-let customLinkedList = new LinkedList("Banana");
+let myLinkedList = new LinkedList("Coconut");
